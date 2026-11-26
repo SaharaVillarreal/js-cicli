@@ -10,13 +10,32 @@
 */
 
 // # Fase di preparazione
+// 1. Genera un numero intero casuale tra 1 e 100
+const numeroSegreto = Math.floor(Math.random() * 100) + 1;
 
+// Riga per la verifica (rimuovila o commentala quando hai finito di testare)
+console.log("Numero segreto:", numeroSegreto);
 
-// # Fase di raccolta dati
+let tentativi = 0;
+let indovinato = false;
 
+while (!indovinato) {
+  const input = prompt("Indovina il numero da 1 a 100:");
+  tentativi++;
 
-// # Fase di elaborazione
+  const numeroUtente = Number(input);
+  if (input === null || input.trim() === "" || isNaN(numeroUtente)) {
+    console.log("Scrivi un numero da 1 a 100");
+    continue;
+  }
 
-
-// # Fase di output
+  if (numeroUtente > numeroSegreto) {
+    console.log("Troppo alto");
+  } else if (numeroUtente < numeroSegreto) {
+    console.log("Troppo basso");
+  } else {
+    indovinato = true;
+    alert(`Indovinato in ${tentativi} tentativi!`);
+  }
+}
 
